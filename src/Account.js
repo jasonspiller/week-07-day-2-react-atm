@@ -9,21 +9,49 @@ export default class Account extends Component {
 		}
 	}
 
-	const validateData = (input, operator) => {
+	// const validateData = (input, operator) => {
+	//
+	// 	let value = parseInt(input);
+	// 	let newBalance = 0;
+	//
+	// 	if (value >= 0) {
+	//
+	// 		if (operator === '-') {
+	// 			// set a local variable to the new balance based off of the original balance + amount
+	// 			let newBalance = this.state.balance - value;
+	// 		} else {
+	// 			// set a local variable to the new balance based off of the original balance + amount
+	// 			let newBalance = this.state.balance + value;
+	// 		}
+	//
+	// 		// set the balance to the newBalance using the setState method (necessary)
+	// 		this.setState({
+	// 			balance: newBalance,
+	// 			name: this.props.name
+	// 		})
+	// 		// empty out the text box in this component
+	// 		this.inputBox.value = '';
+	// 	} else {
+	// 		let warning = 'Please Enter a Number';
+	// 		this.setState({
+	// 			name: warning
+	// 		})
+	// 		this.inputBox.value = '';
+	// 	}
+	// }
 
-		let value = parseInt(input);
-		let newBalance = 0;
+	handleDepositClick(e) {
+		// It is good practice to still prevent default behavior
+		e.preventDefault();
 
-		if (value >= 0) {
+		//validateData(this.inputBox.value, '+')
 
-			if (operator === '-') {
-				// set a local variable to the new balance based off of the original balance + amount
-				let newBalance = this.state.balance - value;
-			} else {
-				// set a local variable to the new balance based off of the original balance + amount
-				let newBalance = this.state.balance + value;
-			}
+		// set a local variable to the amount entered in the text box.
+		let amount = parseInt(this.inputBox.value);
 
+		if (amount >= 0) {
+			// set a local variable to the new balance based off of the original balance + amount
+			let newBalance = this.state.balance + amount;
 			// set the balance to the newBalance using the setState method (necessary)
 			this.setState({
 				balance: newBalance,
@@ -40,57 +68,32 @@ export default class Account extends Component {
 		}
 	}
 
-	handleDepositClick(e) {
-		// It is good practice to still prevent default behavior
-		e.preventDefault();
-		// set a local variable to the amount entered in the text box.
-		validateData(this.inputBox.value, '+')
-		// let amount = parseInt(this.inputBox.value);
-		//
-		// if (amount >= 0) {
-		// 	// set a local variable to the new balance based off of the original balance + amount
-		// 	let newBalance = this.state.balance + amount;
-		// 	// set the balance to the newBalance using the setState method (necessary)
-		// 	this.setState({
-		// 		balance: newBalance,
-		// 		name: this.props.name
-		// 	})
-		// 	// empty out the text box in this component
-		// 	this.inputBox.value = '';
-		// } else {
-		// 	let warning = 'Please Enter a Number';
-		// 	this.setState({
-		// 		name: warning
-		// 	})
-		// 	this.inputBox.value = '';
-		// }
-	}
-
 	handleWithdrawClick(e) {
 		// It is good practice to still prevent default behavior
 		e.preventDefault();
 
-		validateData(this.inputBox.value, '-')
-		// // set a local variable to the amount entered in the text box.
-		// let amount = parseInt(this.inputBox.value);
-		//
-		// if (amount >= 0) {
-		// 	// set a local variable to the new balance based off of the original balance + amount
-		// 	let newBalance = this.state.balance - amount;
-		// 	// set the balance to the newBalance using the setState method (necessary)
-		// 	this.setState({
-		// 		balance: newBalance,
-		// 		name: this.props.name
-		// 	})
-		// 	// empty out the text box in this component
-		// 	this.inputBox.value = '';
-		// } else {
-		// 	let warning = 'Please Enter a Number';
-		// 	this.setState({
-		// 		name: warning
-		// 	})
-		// 	this.inputBox.value = '';
-		// }
+		//validateData(this.inputBox.value, '-')
+
+		// set a local variable to the amount entered in the text box.
+		let amount = parseInt(this.inputBox.value);
+
+		if (amount >= 0) {
+			// set a local variable to the new balance based off of the original balance + amount
+			let newBalance = this.state.balance - amount;
+			// set the balance to the newBalance using the setState method (necessary)
+			this.setState({
+				balance: newBalance,
+				name: this.props.name
+			})
+			// empty out the text box in this component
+			this.inputBox.value = '';
+		} else {
+			let warning = 'Please Enter a Number';
+			this.setState({
+				name: warning
+			})
+			this.inputBox.value = '';
+		}
 	}
   render() {
 		// set the default class to `balance` for the balanceClass.
